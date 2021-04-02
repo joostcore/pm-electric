@@ -9,6 +9,7 @@ function preload_sounds() {
         sounds[theme]['coin'] = new Audio("themes/" + theme + "/sounds/coin.mp3")
         sounds[theme]['dead'] = new Audio("themes/" + theme + "/sounds/dead.mp3")
         sounds[theme]['success'] = new Audio("themes/" + theme + "/sounds/success.mp3")
+        sounds[theme]['inTheEnd'] = new Audio("themes/" + theme + "/sounds/inTheEnd.mp3")
     }
 }
 
@@ -35,4 +36,12 @@ function sound_jump_on_enemy() {
 
 function sound_success() {
     sounds[theme]['success'].play()
+}
+
+function sound_inTheEnd() {
+    sounds[theme]['inTheEnd'].play()
+}
+
+function sound_inTheEnd_stop() {
+    sounds[theme]['inTheEnd'].pause()
 }

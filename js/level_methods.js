@@ -106,6 +106,8 @@ blocks[']'] = {sx:12, sy:1};
 blocks['j'] = {sx:2, sy:5};
 blocks['Z'] = {sx:9, sy:9};
 blocks['f'] = {sx:12, sy:2};
+blocks['-'] = {sx:10, sy:9, collide:true, type:'inTheEnd' };
+blocks['_'] = {sx:11, sy:9, collide:true, type:'inTheEnd_stop' };
 
 
 function getLevelObject(character) {

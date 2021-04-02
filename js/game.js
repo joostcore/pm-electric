@@ -229,6 +229,7 @@ function updateCharacters() {
                 }
                 if (object.type == 'exit') {
                     levelWin()
+                    sound_inTheEnd_stop()
                 }
                 if (object.type == 'trampoline') {
                     actor.speed.y < 0 ? actor.speed.y = 0 : true
@@ -239,6 +240,13 @@ function updateCharacters() {
                     items.splice(items.indexOf(object), 1)
                     score++
                     sound_coin()
+                }
+                if (object.type == 'inTheEnd') {
+                    sound_inTheEnd()
+                }
+
+                if (object.type == 'inTheEnd_stop') {
+                    sound_inTheEnd_stop()
                 }
             }
 
