@@ -469,7 +469,8 @@ function initializeTheme() {
     player.sprite.x = 0
     player.sprite.y = 32
     preload_sounds()
-    document.getElementById('game').style.backgroundColor = current_level.background;
+    document.getElementById('game').style.backgroundImage = current_level.background;
+    document.getElementById('game').style.backgroundSize = "100%";
     prerenderLevelObjects();
 }
 

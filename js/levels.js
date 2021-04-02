@@ -22,7 +22,7 @@ var levels = [
     {
         name:"SUSE",
         theme:'suse',
-        background: '#207720',
+        background: "url('themes/suse/images/background_cityLightsOut.png')",
         template:[
             "     y                              p         cccc      ccc                                                                   ",
             "  123                            zzzzzzzz    zzzzzz    zzzzz      µµµµ        ~                                               ",
