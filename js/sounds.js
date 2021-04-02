@@ -10,6 +10,7 @@ function preload_sounds() {
         sounds[theme]['dead'] = new Audio("themes/" + theme + "/sounds/dead.mp3")
         sounds[theme]['success'] = new Audio("themes/" + theme + "/sounds/success.mp3")
         sounds[theme]['inTheEnd'] = new Audio("themes/" + theme + "/sounds/inTheEnd.mp3")
+        sounds[theme]['phone_queue'] = new Audio("themes/" + theme + "/sounds/phone_queue.mp3")
     }
 }
 
@@ -44,4 +45,14 @@ function sound_inTheEnd() {
 
 function sound_inTheEnd_stop() {
     sounds[theme]['inTheEnd'].pause()
+}
+
+function sound_phone_queue() {
+    sounds[theme]['phone_queue'].play()
+}
+
+function sound_phone_queue_stop() {
+    sounds[theme]['phone_queue'].pause()
+    sounds[theme]['phone_queue'].currentTime = 0;
+    sounds[theme]['coin'].play()
 }

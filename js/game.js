@@ -248,6 +248,22 @@ function updateCharacters() {
                 if (object.type == 'inTheEnd_stop') {
                     sound_inTheEnd_stop()
                 }
+
+                if (object.type == 'phone_queue') {
+                    sound_inTheEnd_stop()
+                    sound_phone_queue()
+                    speed.player.velocity_x = 0.8
+                    speed.player.velocity_y = 0.8
+                    speed.player.velocity_x_jump = 0.8
+                }
+
+                if (object.type == 'phone_end') {
+                    sound_coin()
+                    sound_phone_queue_stop()
+                    speed.player.velocity_x = 1.5
+                    speed.player.velocity_y = 25
+                    speed.player.velocity_x_jump = 1.5
+                }
             }
 
         })
