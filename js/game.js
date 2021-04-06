@@ -29,6 +29,8 @@ var collisionMap;
 var filterStrength = 20;
 var frameTime = 0, lastLoop = new Date, thisLoop;
 
+var totalLights;
+
 
 // speed, gravity parameters
 var speed = {
@@ -46,7 +48,7 @@ var speed = {
 // size details
 var size = {
     tile: { // size of tiles
-        source: {w: 16, h: 16},
+        source: {w: 32, h: 32},
         target: {w: 32, h: 32}
     },
     tiles: { // number of tiles
@@ -128,9 +130,6 @@ function drawLevel() {
             }
         }
     );
-
-
-    countLightsInCurrentLevel();
 }
 
 
@@ -156,7 +155,7 @@ function updateCharacters() {
             sound_jump()
             actor.speed.y -= speed.player.velocity_y;
         } else if (held.down) {
-            actor.speed.y += speed.player.velocity_y ;
+            actor.speed.y += speed.player.velocity_y;
         }
         held.up = false
 
@@ -200,7 +199,7 @@ function updateCharacters() {
                 if (collides.top) {
                     // if (object.type == 'block_coin' && flashes < 0) {
                     if (object.type == 'block_coin') {
-                        if(flashes > 0) {
+                        if (flashes > 0) {
                             replaceLevelSpriteXY(object.x, object.y, "ß");
                             //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
                             flashes--;
@@ -213,7 +212,7 @@ function updateCharacters() {
                 } else if (collides.bottom) {
 
                     if (object.type == 'block_coin' && held.down) {
-                        if(flashes > 0) {
+                        if (flashes > 0) {
                             replaceLevelSpriteXY(object.x, object.y, "ß");
                             //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
                             flashes--;
@@ -250,8 +249,10 @@ function updateCharacters() {
                     gameOver()
                 }
                 if (object.type == 'exit') {
-                    levelWin()
-                    sound_inTheEnd_stop()
+                    if (totalLights == countLetter(levels[4].template, 'SZ')) {
+                        levelWin()
+                        sound_inTheEnd_stop()
+                    }
                 }
                 if (object.type == 'trampoline') {
                     actor.speed.y < 0 ? actor.speed.y = 0 : true
@@ -482,11 +483,14 @@ function initializeLevel() {
     scroll_x = player.pos.x - (document.documentElement.clientWidth - 4) / 2
     theme = current_level.theme
 
+    levelObject = current_level;
+    totalLights = countLetter(levels[4].template, 'L');
 }
 
 function resetPlayer() {
     player.lives = 3
     score = 0
+    flashes = 0;
     player.pos.x = 0
     respawnPlayer()
 }
@@ -494,7 +498,7 @@ function resetPlayer() {
 
 // todo: re-spawn player at the closest 'y' to the left
 function respawnPlayer() {
-    if (startpos = getLastLevelSpritePosition('y', player.pos.x)) {
+    if (startpos = getLastLevelSpritePosition('P', player.pos.x)) {
         player.pos.x = startpos.x * size.tile.target.w
         if (player.pos.x >= size.canvas.w / 2) {
             scroll_x = startpos.x * size.tile.target.w - size.canvas.w / 2
@@ -550,6 +554,7 @@ function load_level() {
     initDimensions()
     initializeTheme()
     drawLevel()
+    totalLights = countLightsInCurrentLevel();
 }
 
 function initDimensions() {
@@ -595,7 +600,7 @@ function countBulpInCurrentLevel() {
     return i;
 }
 
-function updateFlashes(){
+function updateFlashes() {
 
     document.getElementById("flashCounter").innerText = flashes;
 

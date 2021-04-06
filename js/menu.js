@@ -32,7 +32,7 @@ if (button = document.getElementById("button-play2")) {
 
 if (button = document.getElementById("button-play3")) {
     button.addEventListener('click', function (event) {
-        current_level = levels[1];
+        current_level = levels[4];
         startGame();
     }, false);
 

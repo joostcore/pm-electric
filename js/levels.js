@@ -30,10 +30,10 @@ var levels = [
             "           zzzzzzz                  zzzz z  z zzzz zzzz                                ~                                      ",
             "                          y         z    z  z z    z                     y          zzzzz                                     ",
             "  zzzzz                      ~      zzzz z  z zzzz zz?                                                                        ",
-            "                      zzz??zzz         z z  z    z z                           zzz                                            ",
-            "         zzz?z                      ?zzz zzzz z?zz zzzz                                                                       ",
+            "          cc          zzz??zzz         z z  z    z z                           zzz                                            ",
+            "         zzz?z    z                  ?zzz zzzz z?zz zzzz                                                                       ",
             "                                                                         zzz                                                  ",
-            "                 p            p                 p p p     ~                                                                   ",
+            "              z               p                 p p p     ~                                                                   ",
             "           zzzzzzzzzzzzzzzzzzzzzz    zzzzzzz?z?z?z?zzzzzzzz        zzzz                                  Z                    ",
             "   ^                                      y                                                             ZZZ                   ",
             "  /ü`                                7                             9      p         p                   ZBZ                   ",
@@ -85,5 +85,24 @@ var levels = [
             "  /ü`                                                           p                   p            c      ZBZ     ",
             "88888888888@@@@@@@@@@@@@@@@@@@@@@88888888888888888888888888888888888@@8888@@@@@@@@@88888888888888888888888888888"
         ]
+    },
+    {
+      name:"Level 1",
+      theme:'suse',
+      background:'#000000',
+      template:[
+        "                                                                                                                                                                                                                                                                                                            ",
+        "                                                                                                                                                                                                                                                                                                            ",
+        "                                                                                                                                                                                                                                                                                                            ",
+        "                                                                                                          ?                                                                                                                                                                                                 ",
+        "               L             L                                                         L                                                           ?                                                          ?                                                                                             ",
+        "                                               ?                                                                                                                                VVLVV     VVV                 C                                                                                             ",
+        "   ?                                               L                 P    ?                                C         M                 ?                                   VVV                                A                                                                                        L    ",
+        "   VVLV       VV            V         G                              M                 M                 M A        NHO                      VVLV  V                                                       VVVVV                   P                      V L V                                   V         ",
+        "                                    VVVVV      V                    VVV               VVVV    M         VVVV  V  VLVVVV          L                        L        P     M                                               ?       VLV                              M     VLV                      #  ?      ",
+        "        M   C              C               P       C        ?    C        E    M              E      C                  C              M   C        M          E   M     E              M               678         C         M       C                M          E  C         678        C    C #     M    ",
+        "P  ?   NHO  A   B ? G  M  BA     B         M  M    A   G    M    A   G    D   NHO   B   G ?   DM     A                  AM  P   G  G  NHO  A       NHO  G   G  D  NHO   MD             NHO     B   ?   12345        A  G  G  NHO      A    G   P      NHO   G   G D  A        12345   G   A  G A #    NHO  F",
+        "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSWWWWWWWWWSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSWWWWWWWWWWWWWWWWWWSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSWWWWWWWWWWWWVVVVVVVWWSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSWWWWWWSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
+      ]
     }
 ];
