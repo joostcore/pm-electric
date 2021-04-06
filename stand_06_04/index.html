@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+    <title>SUSE Run</title>
+
+    <link href="css/game.css" rel="stylesheet" type="text/css">
+    <link href="css/pad-controls.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="game-container">
+    <canvas id="game">
+
+    </canvas>
+
+
+    <div id="game-menu" class="game-info">
+
+        <div class="menu-item menu-text" id="intro">
+            <p>Welcome to the Geeko run!</p>
+        </div>
+
+        <div class="menu-item menu-link" id="button-play3">
+            SUSE Geeko run
+        </div>
+
+
+        <div class="menu-item menu-text" id="help">
+            <p>Please use your arrow keys or pad controls to play.</p>
+        </div>
+
+    </div>
+
+    <div id="game-over" class="game-info">
+        <div class="menu-item menu-link" id="button-restart">
+            Play again
+        </div>
+        <div class="menu-item menu-link" id="button-menu">
+            Back to main menu
+        </div>
+    </div>
+
+
+    <div id="pad-controls">
+        <div class="controls-wrapper controls-left">
+            <ul>
+                <li class="cross" id="control-up"></li>
+            </ul>
+        </div>
+        <div class="controls-wrapper controls-right">
+            <ul>
+                <li id="control-left"></li>
+                <li id="control-right"></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <h2 id="flash_counter">0</h2>
+
+</div>
+
+
+<!-- don't forget the charset here, else the levels will be parsed incorrectly -->
+<script type="text/javascript" src="js/menu.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/levels.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/level_methods.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/game.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/controls.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/sounds.js" charset="utf-8"></script>
+
+
+<img src="themes/suse/images/game_tiles.png" width="0" height="0"/>
+<img src="themes/suse/images/player_sprites.png" width="0" height="0"/>
+
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function (event) {
+    load_level()
+})</script>
+
+
+<a id="flash_container_counter">
+    <h1 id="flashCounter" style="position: absolute; top: 12px; right: 64px; border: 0; color:white">1000</h1>
+</a>
+<a id="flash_container_img">
+    <img id="flashCounterImg" style="position: absolute; top: 32px; right: 32px; border: 0;">
+</a>
+
+
+<script>
+    document.getElementById('flashCounterImg').src = loadSingleObjectImage('?');
+</script>
+</body>
+</html>
