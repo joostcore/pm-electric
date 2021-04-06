@@ -194,9 +194,10 @@ function updateCharacters() {
             // special actions on collisions
             if (object.solid) {
                 if (collides.top) {
+                    // if (object.type == 'block_coin' && flashes < 0) {
                     if (object.type == 'block_coin') {
                         replaceLevelSpriteXY(object.x, object.y, "ß");
-                        items.push({ sx:8, sy:9, x:object.x, y:(object.y - size.tile.target.h), type:'coin' });
+                        //flashes--;
                     } else {
                         actor.pos.y = object.y + size.tile.target.h;
                         actor.speed.y = 1;
@@ -437,6 +438,7 @@ function gameOver() {
         // todo: dying animation
         actors = []
         showGameOver()
+        sound_inTheEnd_stop()
     }
 }
 
