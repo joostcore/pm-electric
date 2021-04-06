@@ -200,7 +200,7 @@ function updateCharacters() {
                     if (object.type == 'block_coin') {
                         if(flashes > 0) {
                             replaceLevelSpriteXY(object.x, object.y, "ß");
-                            items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
+                            //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
                             flashes--;
                         }
                     } else {
@@ -212,7 +212,7 @@ function updateCharacters() {
                     if (object.type == 'block_coin' && held.down) {
                         if(flashes > 0) {
                             replaceLevelSpriteXY(object.x, object.y, "ß");
-                            items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
+                            //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
                             flashes--;
                         }
                     } else {
