@@ -112,6 +112,26 @@ blocks['7'] = {sx:12, sy:9, collide:true, type:'phone_queue' };
 blocks['9'] = {sx:12, sy:10, collide:true, type:'phone_end' };
 
 
+function loadSingleObjectImage(character){
+    initializeTheme();
+    let object = getLevelObject(character);
+    var block = object
+    var canvas = document.createElement('canvas')
+    canvas.width = size.tile.target.w
+    canvas.height = size.tile.target.h
+    canvas.getContext("2d").drawImage(
+        spriteMap,
+        block.sx * (size.tile.source.w + 1) + 0.5,
+        block.sy * (size.tile.source.h + 1) + 0.5,
+        size.tile.source.w - 0.8,
+        size.tile.source.h - 0.8,
+        0,
+        0,
+        size.tile.target.w,
+        size.tile.target.h);
+    return canvas.toDataURL("image/png");
+}
+
 function getLevelObject(character) {
     var object = blocks[character];
     return object

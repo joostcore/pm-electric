@@ -78,6 +78,7 @@ Number.prototype.inRange = function (a, b) {
 
 function drawLevel() {
 
+    updateFlashes()
     // clear the canvas before repainting
     ctx.clearRect(0, 0, size.canvas.w, size.canvas.h);
     collisionMap = [];
@@ -127,6 +128,7 @@ function drawLevel() {
             }
         }
     );
+
 
     countLightsInCurrentLevel();
 }
@@ -202,6 +204,7 @@ function updateCharacters() {
                             replaceLevelSpriteXY(object.x, object.y, "ß");
                             //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
                             flashes--;
+                            updateFlashes();
                         }
                     } else {
                         actor.pos.y = object.y + size.tile.target.h;
@@ -214,6 +217,7 @@ function updateCharacters() {
                             replaceLevelSpriteXY(object.x, object.y, "ß");
                             //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
                             flashes--;
+                            updateFlashes();
                         }
                     } else {
                         actor.pos.y = object.y + size.tile.target.h;
@@ -258,6 +262,7 @@ function updateCharacters() {
                     items.splice(items.indexOf(object), 1)
                     score++;
                     flashes++;
+                    updateFlashes();
                     sound_coin()
                 }
                 if (object.type == 'inTheEnd') {
@@ -588,6 +593,12 @@ function countBulpInCurrentLevel() {
     });
 
     return i;
+}
+
+function updateFlashes(){
+
+    document.getElementById("flashCounter").innerText = flashes;
+
 }
 
 function countLightsInCurrentLevel() {
