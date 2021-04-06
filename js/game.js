@@ -12,7 +12,8 @@ var theme = 'suse'
 var current_level = levels[1];
 
 var gameInterval;
-var score
+var score;
+var flashes = 0;
 
 // position displayed level
 var scroll_x = 0;
@@ -197,8 +198,11 @@ function updateCharacters() {
                 if (collides.top) {
                     // if (object.type == 'block_coin' && flashes < 0) {
                     if (object.type == 'block_coin') {
-                        replaceLevelSpriteXY(object.x, object.y, "ß");
-                        //flashes--;
+                        if(flashes > 0) {
+                            replaceLevelSpriteXY(object.x, object.y, "ß");
+                            items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
+                            flashes--;
+                        }
                     } else {
                         actor.pos.y = object.y + size.tile.target.h;
                         actor.speed.y = 1;
@@ -206,8 +210,11 @@ function updateCharacters() {
                 } else if (collides.bottom) {
 
                     if (object.type == 'block_coin' && held.down) {
-                        replaceLevelSpriteXY(object.x, object.y, "ß");
-                        items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
+                        if(flashes > 0) {
+                            replaceLevelSpriteXY(object.x, object.y, "ß");
+                            items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
+                            flashes--;
+                        }
                     } else {
                         actor.pos.y = object.y + size.tile.target.h;
                         actor.speed.y = 1;
@@ -249,7 +256,8 @@ function updateCharacters() {
                 }
                 if (object.type == 'coin') {
                     items.splice(items.indexOf(object), 1)
-                    score++
+                    score++;
+                    flashes++;
                     sound_coin()
                 }
                 if (object.type == 'inTheEnd') {
@@ -468,6 +476,7 @@ function initializeLevel() {
     resetPlayer()
     scroll_x = player.pos.x - (document.documentElement.clientWidth - 4) / 2
     theme = current_level.theme
+
 }
 
 function resetPlayer() {
@@ -570,6 +579,16 @@ function restartGame() {
     startGame()
 }
 
+function countBulpInCurrentLevel() {
+    let i = 0
+    collisionMap.forEach(function (object) {
+        if (object.type == "coin") {
+            i++;
+        }
+    });
+
+    return i;
+}
 
 function countLightsInCurrentLevel() {
     let i = 0

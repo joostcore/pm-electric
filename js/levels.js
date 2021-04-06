@@ -74,7 +74,7 @@ var levels = [
             "         c   cc    ~                                     ~               µµµµ       456                         ",
             " zzzz z  z zzzz zzzz   zzz? zzzz z   z   zzzz zzzz zz zzzz                                                      ",
             " z    z  z z    z      z    z  z zz  z     zz z  z  z z     y                                                   ",
-            " zzzz zccz zzzz zz?    z    z  z z z z    z   z  z  z  zz                   c                                   ",
+            " zzzz zc?z zzzz zz?    z    z  z z z z    z   z  z  z  zz                   c                                   ",
             "    z zccz    z z      z    z  z z  zz   z    z  z  z    z                zzzz                                  ",
             " zzzz zzzz zzzz zzzz   zz?z zzzz z   z   zzzz zzzz  z zzzz                                                      ",
             "                                                                      ?zz                                       ",

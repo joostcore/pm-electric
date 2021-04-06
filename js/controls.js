@@ -80,14 +80,7 @@ function registerControls() {
     };
 
 
-    // touch based controls:
 
-    if (is_touch_device()) {
-        if (document.getElementById("github-fork-me")) {
-            document.getElementById("github-fork-me").style.visibility = "hidden"
-        }
-        document.getElementById("pad-controls").style.visibility = "visible"
-    }
 
     // prevent scrolling etc
     disable_default_touch()
