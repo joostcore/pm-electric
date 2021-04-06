@@ -34,7 +34,7 @@ var speed = {
     player:{
         velocity_x:1.5,
         velocity_x_jump:1.5,
-        velocity_y:25,
+        velocity_y:15.7,
         gravity:2,
         friction:0.8,
         speed_limit_y:25
@@ -152,6 +152,7 @@ function updateCharacters() {
             sound_jump()
             actor.speed.y -= speed.player.velocity_y;
         } else if (held.down) {
+            actor.speed.y += speed.player.velocity_y;
             // this only causes a duck animation, nothing happens in term of speed
         }
         held.up = false
@@ -203,6 +204,15 @@ function updateCharacters() {
                         actor.speed.y = 1;
                     }
                 } else if (collides.bottom) {
+
+                    if (object.type == 'block_coin') {
+                        replaceLevelSpriteXY(object.x, object.y, "ß");
+                        items.push({ sx:8, sy:9, x:object.x, y:(object.y - size.tile.target.h), type:'coin' });
+                    } else {
+                        actor.pos.y = object.y + size.tile.target.h;
+                        actor.speed.y = 1;
+                    }
+
                     // jump on enemy
                     if (object.type == 'enemy_mushroom') {
                         object.deadly = false
