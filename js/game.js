@@ -21,7 +21,7 @@ var scroll_x_start = 0;
 // 5 free lines on top, 13 lines of level content
 var line_offset_y = 5;
 
-var held = {left:false, right:false, up:false, down:false};
+var held = {left: false, right: false, up: false, down: false};
 var collisionMap;
 
 // fps measurement
@@ -31,35 +31,35 @@ var frameTime = 0, lastLoop = new Date, thisLoop;
 
 // speed, gravity parameters
 var speed = {
-    player:{
-        velocity_x:1.5,
-        velocity_x_jump:1.5,
-        velocity_y:15.7,
-        gravity:2,
-        friction:0.8,
-        speed_limit_y:25
+    player: {
+        velocity_x: 1.5,
+        velocity_x_jump: 1.5,
+        velocity_y: 15.7,
+        gravity: 2,
+        friction: 0.8,
+        speed_limit_y: 25
     },
-    fps:30
+    fps: 30
 }
 
 // size details
 var size = {
-    tile:{ // size of tiles
-        source:{w:16, h:16},
-        target:{w:32, h:32}
+    tile: { // size of tiles
+        source: {w: 16, h: 16},
+        target: {w: 32, h: 32}
     },
-    tiles:{ // number of tiles
-        target:{w:1, h:1} // this is set dynamically depending on the canvas size
+    tiles: { // number of tiles
+        target: {w: 1, h: 1} // this is set dynamically depending on the canvas size
     },
-    canvas:{w:1, h:1} // the canvas size is read from the actual html
+    canvas: {w: 1, h: 1} // the canvas size is read from the actual html
 };
 
 player = {
-    pos: {x:0, y:0},
-    sprite: {x:0, y:32},
-    source_size: {w:32, h:32},
-    target_size: {w:42, h:42},
-    speed: {x:0, y:0},
+    pos: {x: 0, y: 0},
+    sprite: {x: 0, y: 32},
+    source_size: {w: 32, h: 32},
+    target_size: {w: 42, h: 42},
+    speed: {x: 0, y: 0},
     spriteMap: new Image,
     lives: 3
 };
@@ -71,9 +71,8 @@ String.prototype.replaceAt = function (index, characters) {
 
 Number.prototype.inRange = function (a, b) {
     var n = +this;
-    return ( n >= a && n <= b );
+    return (n >= a && n <= b);
 };
-
 
 
 function drawLevel() {
@@ -101,7 +100,7 @@ function drawLevel() {
                     object.y = index_y * size.tile.target.h
 
                     // workaround failed local image load
-                    if (object.sprite.src){
+                    if (object.sprite.src) {
                         ctx.drawImage(object.sprite, object.x - index_x_start * size.tile.target.w, object.y)
                     } else {
                         ctx.drawImage(spriteMap,
@@ -127,6 +126,8 @@ function drawLevel() {
             }
         }
     );
+
+    countLightsInCurrentLevel();
 }
 
 
@@ -152,8 +153,7 @@ function updateCharacters() {
             sound_jump()
             actor.speed.y -= speed.player.velocity_y;
         } else if (held.down) {
-            actor.speed.y += speed.player.velocity_y;
-            // this only causes a duck animation, nothing happens in term of speed
+            actor.speed.y += speed.player.velocity_y ;
         }
         held.up = false
 
@@ -205,9 +205,9 @@ function updateCharacters() {
                     }
                 } else if (collides.bottom) {
 
-                    if (object.type == 'block_coin') {
+                    if (object.type == 'block_coin' && held.down) {
                         replaceLevelSpriteXY(object.x, object.y, "ß");
-                        items.push({ sx:8, sy:9, x:object.x, y:(object.y - size.tile.target.h), type:'coin' });
+                        items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
                     } else {
                         actor.pos.y = object.y + size.tile.target.h;
                         actor.speed.y = 1;
@@ -301,7 +301,7 @@ function updateCharacters() {
 
 
 function checkCollision(actor, object) {
-    var collides = {top:false, bottom:false, left:false, right:false};
+    var collides = {top: false, bottom: false, left: false, right: false};
     // we are below or above an object (use the middle of the actor, with tolerance)
     if ((actor.pos.x + actor.target_size.w / 2).inRange(object.x - 0.25 * size.tile.target.w, object.x + 1.25 * size.tile.target.w)) {
         // check bounce bottom:
@@ -346,9 +346,7 @@ function animate_actor(actor) {
             actor.sprite.x += actor.source_size.w;
         }
     }
-    if (held.down) {
-        // todo: ducken
-    }
+
 }
 
 // update special items, enemies
@@ -443,7 +441,7 @@ function drawElements() {
 function gameOver() {
     sound_dead()
     if (--player.lives > 0) {
-       respawnPlayer()
+        respawnPlayer()
     } else {
         // todo: dying animation
         actors = []
@@ -484,8 +482,8 @@ function resetPlayer() {
 function respawnPlayer() {
     if (startpos = getLastLevelSpritePosition('y', player.pos.x)) {
         player.pos.x = startpos.x * size.tile.target.w
-        if (player.pos.x >= size.canvas.w/2) {
-            scroll_x = startpos.x * size.tile.target.w - size.canvas.w/2
+        if (player.pos.x >= size.canvas.w / 2) {
+            scroll_x = startpos.x * size.tile.target.w - size.canvas.w / 2
         } else {
             scroll_x = 0
         }
@@ -570,6 +568,18 @@ function restartGame() {
     window.clearInterval(gameInterval)
     initGame()
     startGame()
+}
+
+
+function countLightsInCurrentLevel() {
+    let i = 0
+    collisionMap.forEach(function (object) {
+        if (object.type == "block_coin") {
+            i++;
+        }
+    });
+
+    return i;
 }
 
 window.onload = function () {
