@@ -611,6 +611,8 @@ function countBulpInCurrentLevel() {
 
 function updateFlashes() {
 
+
+    document.getElementById("lightCounter").innerText = lights;
     document.getElementById("flashCounter").innerText = flashes;
 
 }
