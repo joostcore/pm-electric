@@ -62,9 +62,7 @@ document.getElementById("button-restart").addEventListener('click', function (ev
 }, false);
 
 document.getElementById("button-menu").addEventListener('click', function (event) {
-    document.getElementById('game').style.backgroundImage = 'none';
-    initGame()
-    showStartMenu()
+  startMainMenue();
 }, false);
 
 var gameover_menu = document.getElementById("game-over");
@@ -86,4 +84,10 @@ function showSuccess() {
 
 function hideSuccess() {
     success_menu.style.visibility = "hidden";
+}
+
+function startMainMenue(){
+    document.getElementById('game').style.backgroundImage = 'none';
+    initGame()
+    showStartMenu()
 }

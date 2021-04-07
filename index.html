@@ -12,7 +12,7 @@
     <link href="css/game.css" rel="stylesheet" type="text/css">
     <link href="css/pad-controls.css" rel="stylesheet" type="text/css">
 </head>
-<body style='background-image: url("themes/caza/images/home.png")'>
+<body style='background-image: url("themes/caza/images/home.png"); background-size: 100% 100%'>
 
 <div id="game-container">
     <div id="pop-up">
@@ -23,8 +23,8 @@
     </canvas>
 
 
-    <div id="game-menu" class="game-info">
-        <div class="menu-item menu-text" id="video" style="height: 480px">
+    <div id="game-menu" class="game-info" style="padding-top: 10%">
+        <div class="menu-item menu-text" id="video" style="height: 100%">
             <iframe src="https://www.youtube.com/embed/miFF-MV_NBI" style="width: 100%;height: 100%">
             </iframe>
         </div>
@@ -37,7 +37,7 @@
         <div class="menu-item menu-link" id="button-restart">
             Nochmal Versuchen
         </div>
-        <div class="menu-item menu-link" id="button-menu">
+        <div class="menu-item menu-link" onclick="startMainMenue()">
             Zurück zum Hauptmenü
         </div>
     </div>
@@ -49,7 +49,7 @@
       <div class="menu-item menu-link" id="button-level_2">
         Level 2
       </div>
-      <div class="menu-item menu-link" id="button-menu">
+      <div class="menu-item menu-link" id="button-menu" onclick="startMainMenue()">
           Zurück zum Hauptmenü
       </div>
     </div>
@@ -106,6 +106,7 @@
 <script>
     document.getElementById('flashCounterImg').src = loadSingleObjectImage('?');
     document.getElementById('lightCounterImg').src = loadSingleObjectImage('ß');
+
 </script>
 </body>
 </html>
