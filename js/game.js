@@ -225,11 +225,10 @@ function updateCharacters() {
 
                     // jump on enemy
                     if (object.type == 'enemy_mushroom') {
-                        object.deadly = false
-                        object.speed = 0
-                        object.sx = 2
-                        score++;
-                        sound_jump_on_enemy()
+                        if (object.deadly == true) {
+                            //items.push({ sx:, sy:9, x:actor.pos.x, y:actor.pos.y, deadly:false, type:'looser' });
+                            gameOver()
+                        }
                     }
                     actor.pos.y = object.y - actor.target_size.h;
                     actor.speed.y = 0;
