@@ -8,8 +8,8 @@ var items;
 var debug = false;
 
 // default theme and level
-var theme = 'suse'
-var current_level = levels[4];
+var theme = 'caza'
+var current_level = levels[0];
 
 var gameInterval;
 var score;
@@ -228,10 +228,11 @@ function updateCharacters() {
 
                     // jump on enemy
                     if (object.type == 'enemy_mushroom') {
-                        if (object.deadly == true) {
-                            //items.push({ sx:, sy:9, x:actor.pos.x, y:actor.pos.y, deadly:false, type:'looser' });
-                            gameOver()
-                        }
+                        object.deadly = false
+                        object.speed = 0
+                        object.sx = 2
+                        score++;
+                        sound_jump_on_enemy()
                     }
                     actor.pos.y = object.y - actor.target_size.h;
                     actor.speed.y = 0;
