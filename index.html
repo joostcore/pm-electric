@@ -12,51 +12,47 @@
     <link href="css/game.css" rel="stylesheet" type="text/css">
     <link href="css/pad-controls.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body style='background-image: url("themes/caza/images/home.png")'>
 
 <div id="game-container">
+    <div id="pop-up">
+      <button type="button" class="tutorial-exit" onclick="document.getElementById('pop-up').style.visibility = 'hidden';">Spielen</button>
+    </div>
     <canvas id="game">
 
     </canvas>
 
 
     <div id="game-menu" class="game-info">
-
-        <div class="menu-item menu-text" id="intro">
-            <p>Caza La Luz </p>
-        </div>
-
-        <div class="menu-item menu-link" id="button-play">
-            Play Game
-        </div>
-
         <div class="menu-item menu-text" id="video" style="height: 480px">
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" style="width: 100%;height: 100%">
+            <iframe src="https://www.youtube.com/embed/miFF-MV_NBI" style="width: 100%;height: 100%">
             </iframe>
         </div>
-
-
-
-        <div class="menu-item menu-text" id="help">
-            <p>Please use your arrow keys or pad controls to play.</p>
+        <div class="menu-item menu-link" id="button-play">
+            Spielen
         </div>
-
-
-
     </div>
 
     <div id="game-over" class="game-info">
-        <div class="menu-item menu-link" id="button-Next">
-            Nächstes Level
-        </div>
         <div class="menu-item menu-link" id="button-restart">
-            Play again
+            Nochmal Versuchen
         </div>
         <div class="menu-item menu-link" id="button-menu">
-            Back to main menu
+            Zurück zum Hauptmenü
         </div>
     </div>
 
+    <div id="success" class="game-info">
+      <div class="menu-item menu-link" id="button-level_1">
+        Level 1
+      </div>
+      <div class="menu-item menu-link" id="button-level_2">
+        Level 2
+      </div>
+      <div class="menu-item menu-link" id="button-menu">
+          Zurück zum Hauptmenü
+      </div>
+    </div>
 
     <div id="pad-controls">
         <div class="controls-wrapper controls-left">
@@ -72,11 +68,8 @@
         </div>
     </div>
 
-
     <h2 id="flash_counter">0</h2>
-
 </div>
-
 
 <!-- don't forget the charset here, else the levels will be parsed incorrectly -->
 <script type="text/javascript" src="js/menu.js" charset="utf-8"></script>
@@ -109,7 +102,6 @@
 <a id="lights_container_img">
     <img id="lightCounterImg" style="position: absolute; top: 32px; right: 96px; border: 0;">
 </a>
-
 
 <script>
     document.getElementById('flashCounterImg').src = loadSingleObjectImage('?');
