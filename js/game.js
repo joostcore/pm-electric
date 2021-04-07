@@ -211,11 +211,37 @@ function updateCharacters() {
                         actor.pos.y = object.y + size.tile.target.h;
                         actor.speed.y = 1;
                     }
+
+                    if (object.type == 'block_coin_f') {
+                        if (flashes > 0) {
+                            replaceLevelSpriteXY(object.x, object.y, "Q");
+                            lights--;
+                            //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
+                            flashes--;
+                            updateFlashes();
+                        }
+                    } else {
+                        actor.pos.y = object.y + size.tile.target.h;
+                        actor.speed.y = 1;
+                    }
                 } else if (collides.bottom) {
 
                     if (object.type == 'block_coin' && held.down) {
                         if (flashes > 0) {
                             replaceLevelSpriteXY(object.x, object.y, "ß");
+                            lights--;
+                            //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
+                            flashes--;
+                            updateFlashes();
+                        }
+                    } else {
+                        actor.pos.y = object.y + size.tile.target.h;
+                        actor.speed.y = 1;
+                    }
+
+                    if (object.type == 'block_coin_f' && held.down) {
+                        if (flashes > 0) {
+                            replaceLevelSpriteXY(object.x, object.y, "Q");
                             lights--;
                             //items.push({sx: 8, sy: 9, x: object.x, y: (object.y - size.tile.target.h), type: 'coin'});
                             flashes--;
@@ -257,7 +283,7 @@ function updateCharacters() {
                     if(lights == 0){
                       levelWin()
                     }else{
-                      console.log("Da fehlen noch Lichter")
+
                     }
                 }
                 if (object.type == 'trampoline') {
@@ -274,29 +300,6 @@ function updateCharacters() {
                 }
                 if (object.type == 'respawn') {
                     replaceLevelSpriteXY(object.x, object.y, 'K');
-                }
-                if (object.type == 'inTheEnd') {
-                    sound_inTheEnd()
-                }
-
-                if (object.type == 'inTheEnd_stop') {
-                    sound_inTheEnd_stop()
-                }
-
-                if (object.type == 'phone_queue') {
-                    sound_inTheEnd_stop()
-                    sound_phone_queue()
-                    speed.player.velocity_x = 0.8
-                    speed.player.velocity_y = 0.8
-                    speed.player.velocity_x_jump = 0.8
-                }
-
-                if (object.type == 'phone_end') {
-                    sound_coin()
-                    sound_phone_queue_stop()
-                    speed.player.velocity_x = 1.5
-                    speed.player.velocity_y = 25
-                    speed.player.velocity_x_jump = 1.5
                 }
             }
 
@@ -469,7 +472,6 @@ function gameOver() {
         // todo: dying animation
         actors = []
         showGameOver()
-        sound_inTheEnd_stop()
     }
 }
 
@@ -478,7 +480,7 @@ function levelWin() {
     // todo:  winning animation
     actors = [];
     // todo: level done menu
-    showGameOver()
+    showSuccess()
 }
 
 function initializeLevel() {
@@ -530,8 +532,6 @@ function initializeTheme() {
     player.sprite.x = 0
     player.sprite.y = 32
     preload_sounds()
-    document.getElementById('game').style.backgroundImage = current_level.background;
-    document.getElementById('game').style.backgroundSize = "100%";
     prerenderLevelObjects();
 }
 
@@ -611,10 +611,8 @@ function countBulpInCurrentLevel() {
 
 function updateFlashes() {
 
-
     document.getElementById("lightCounter").innerText = lights;
     document.getElementById("flashCounter").innerText = flashes;
-
 }
 /*
 function countLightsInCurrentLevel() {
